@@ -6,7 +6,7 @@ import {
   IMainLayoutStyleProps,
   IMainLayoutStyles,
 } from "./MainLayout.types";
-import { Home, Foo, Bar } from "../../control/componentContent/Pages";
+import { Home, AddUser } from "../../control/componentContent/Pages";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { NavApp } from "../../control/nav/components";
 import { NavItemIconStyle } from "../../control/nav/components/NavApp.styles";
@@ -51,7 +51,7 @@ export class MainLayoutBase extends React.Component<IMainLayoutProps, {}> {
                       links: [
                         {
                           name: "Active Users",
-                          url: "/#/foo",
+                          url: "/#/activeUser",
                           key: "key1",
                           target: "",
                         },
@@ -68,8 +68,7 @@ export class MainLayoutBase extends React.Component<IMainLayoutProps, {}> {
                 <div>
                   <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/foo" component={Foo} />
-                    <Route exact path="/bar" component={Bar} />
+                    <Route exact path="/activeUser" component={AddUser} />
                   </Switch>
                 </div>
               </Router>

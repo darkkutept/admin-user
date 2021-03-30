@@ -5,9 +5,10 @@ import {
   IButtonChangeProps,
   IButtonChangeStyleProps,
   IButtonChangeStyles,
-} from "../buttonChange/components";
+} from "../../buttonChange/components";
 import { CommandBar, IButtonProps, ICommandBarItemProps } from "@fluentui/react";
-import { LineSeperator } from "../seperator/LineSeperator";
+import { LineSeperator } from "../../seperator/LineSeperator";
+import DetailsListBase from "../../detailsList/components/DetailsList.base";
 
 const getClassNames = classNamesFunction<
   IButtonChangeStyleProps,
@@ -30,6 +31,9 @@ export class AddUsersBase extends React.Component<IButtonChangeProps, {}> {
           farItems={_farItems}
           ariaLabel="Use left and right arrow keys to navigate between commands"
         />
+        <div>
+          <DetailsListBase></DetailsListBase>
+        </div>
       </div>
     );
   }
@@ -41,21 +45,6 @@ const _items: ICommandBarItemProps[] = [
       text: 'Add a user',
       cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
       iconProps: { iconName: 'Add' },
-      subMenuProps: {
-        items: [
-          {
-            key: 'emailMessage',
-            text: 'Email message',
-            iconProps: { iconName: 'Mail' },
-            ['data-automation-id']: 'newEmailButton', // optional
-          },
-          {
-            key: 'calendarEvent',
-            text: 'Calendar event',
-            iconProps: { iconName: 'Calendar' },
-          },
-        ],
-      },
     },
     {
       key: 'upload',
