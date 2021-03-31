@@ -1,7 +1,6 @@
 import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
-
 export interface IIconShowAppProps
 {
  
@@ -27,4 +26,5 @@ export interface IIconShowAppStyles
    iconHeaderLeft?: IStyle;
    appName?: IStyle;
    HeaderLeft?: IStyle;
+   hieu?: IStyle;
 }

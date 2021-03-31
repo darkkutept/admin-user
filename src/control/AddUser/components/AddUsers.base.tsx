@@ -1,28 +1,25 @@
 import * as React from "react";
-import {} from "./AddUsers.types";
+import { IAddUsersProps, IAddUsersStyleProps, IAddUsersStyles } from "./AddUsers.types";
 import { classNamesFunction } from "office-ui-fabric-react";
-import {
-  IButtonChangeProps,
-  IButtonChangeStyleProps,
-  IButtonChangeStyles,
-} from "../../buttonChange/components";
 import { CommandBar, IButtonProps, ICommandBarItemProps } from "@fluentui/react";
 import { LineSeperator } from "../../seperator/LineSeperator";
 import DetailsListBase from "../../detailsList/components/DetailsList.base";
+import { PanelBase } from "../../Panel/components/Panel.base";
+import { openPanel } from "../../Panel/mutatorAction/openPanel";
+import { Panel } from "../../Panel";
 
 const getClassNames = classNamesFunction<
-  IButtonChangeStyleProps,
-  IButtonChangeStyles
+  IAddUsersStyleProps, IAddUsersStyles
 >();
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
-export class AddUsersBase extends React.Component<IButtonChangeProps, {}> {
+export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
   render() {
     const { className, styles } = this.props;
     const classNames = getClassNames(styles, { className });
     return (
       <div>
-        <h1>Active User</h1>
+        <h1 className = {classNames.hieu}>Active User</h1>
         <LineSeperator></LineSeperator>
         <CommandBar
           items={_items}
@@ -34,6 +31,7 @@ export class AddUsersBase extends React.Component<IButtonChangeProps, {}> {
         <div>
           <DetailsListBase></DetailsListBase>
         </div>
+        <Panel></Panel>
       </div>
     );
   }
@@ -45,6 +43,7 @@ const _items: ICommandBarItemProps[] = [
       text: 'Add a user',
       cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
       iconProps: { iconName: 'Add' },
+      onClick: () => openPanel(),
     },
     {
       key: 'upload',

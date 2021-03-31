@@ -15,6 +15,11 @@ export default class DetailsListBase extends React.Component<IDetailsListBasicPr
 
   constructor(props:any) {
     super(props);
+    this.state = {
+      displayname: '',
+      username: '',
+      email: ''
+    }
 
     this._selection = new Selection({
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
@@ -27,7 +32,7 @@ export default class DetailsListBase extends React.Component<IDetailsListBasicPr
       { key: 'column1', name: 'ID', fieldName: 'id', minWidth: 100, maxWidth: 200, isResizable: true },
       { key: 'column2', name: 'Display name', fieldName: 'displayname', minWidth: 100, maxWidth: 200, isResizable: true },
       { key: 'column3', name: 'User name', fieldName: 'username', minWidth: 100, maxWidth: 200, isResizable: true },
-      { key: 'column3', name: 'Email', fieldName: 'email', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'column4', name: 'Email', fieldName: 'email', minWidth: 100, maxWidth: 200, isResizable: true },
     ];
 
     this.state = {

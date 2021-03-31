@@ -9,8 +9,6 @@ import getStore from '../store/store';
 const getClassNames = classNamesFunction<IIconShowAppStyleProps, IIconShowAppStyles>();
 @observer
 export class IconShowAppBase extends React.Component<IIconShowAppProps, {}>{
-
-
    render() {
       const {
          className,
@@ -19,6 +17,7 @@ export class IconShowAppBase extends React.Component<IIconShowAppProps, {}>{
          iconName,
       } = this.props;
       let isExpanded = getStore().widthShow;
+      
       const classNames = getClassNames(styles, { className, isExpanded });
 
       return (
@@ -27,7 +26,7 @@ export class IconShowAppBase extends React.Component<IIconShowAppProps, {}>{
             <div className={classNames.appName}>{appName}</div>
             <div className={classNames.root}>
                <div className={classNames.divTag}>
-                  <span>Office</span>
+                  <span className={classNames.hieu}>Office</span>
                   <FontIcon iconName="ChromeBackMirrored" className={classNames.iconRight} />
                </div>
             </div>

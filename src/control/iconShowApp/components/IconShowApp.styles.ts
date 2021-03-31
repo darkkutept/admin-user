@@ -49,7 +49,7 @@ export const getStyles = (props: IIconShowAppStyleProps): IIconShowAppStyles => 
       ],
       appName: [
          {
-            gridColumn: '2/3',
+            gridColumn: '3/3',
             color: '#FFFFFF',
          }
       ],
@@ -59,12 +59,11 @@ export const getStyles = (props: IIconShowAppStyleProps): IIconShowAppStyles => 
             gridTemplateColumns:' repeat(2, 1fr)',
          }
       ],
-
-
-
-
-
+      hieu:[
+         {
+            color:'red',
+         }
+      ]
    }
-
    return styles;
 }

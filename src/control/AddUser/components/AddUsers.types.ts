@@ -1,5 +1,5 @@
 import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 
 export interface IAddUsersProps
@@ -16,7 +16,5 @@ export interface IAddUsersStyleProps
 export interface IAddUsersStyles
 {
    root?: IStyle;
-   buttonItem?: IStyle;
-   iconClass?:IStyle;
-   buttonName?:IStyle;
+   hieu?:IStyle;
 }

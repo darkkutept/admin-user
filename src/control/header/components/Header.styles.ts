@@ -16,7 +16,7 @@ export const getStyles = ( props: IHeaderStyleProps ): IHeaderStyles =>
            display: 'flex',
            justifyContent:'space-between',
            alignItems:'center',
-           
+           font:'16px sans-serif',
          }
       ], 
      

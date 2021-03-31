@@ -16,7 +16,7 @@ export class HeaderBase extends React.Component<IHeaderProps, {}> {
 
     return (
       <div className={classNames.root}>
-        <IconShowApp appName={"app name"} iconName={"AlignLeft"} />
+        <IconShowApp appName={"ProptechSoft"} iconName={"AlignLeft"} />
 
         <div className={classNames.HeaderRight}>
           

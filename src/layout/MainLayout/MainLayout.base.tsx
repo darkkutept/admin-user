@@ -10,7 +10,10 @@ import { Home, AddUser } from "../../control/componentContent/Pages";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { NavApp } from "../../control/nav/components";
 import { NavItemIconStyle } from "../../control/nav/components/NavApp.styles";
-import { Header } from "../../control/header/components";
+import { Header } from "../../control/header";
+import { PanelBase } from "../../control/Panel/components/Panel.base";
+import { Panel } from "../../control/Panel";
+
 
 const getClassNames = classNamesFunction<
   IMainLayoutStyleProps,

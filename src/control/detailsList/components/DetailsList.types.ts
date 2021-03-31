@@ -4,12 +4,17 @@ import { IStyleFunctionOrObject } from '@fluentui/react';
 export interface IDetailsListBasicProps {
   className?: string;
   styles?: IStyleFunctionOrObject<IDetailsListBasicStyleProps, IDetailsListBasicStyles>;
-  displayname?:string
+  displayname?: string,
+  username?:string
+  email?:string
 }
 
 export interface IDetailsListBasicExampleState {
   items?: IDetailsListBasicProps[];
-  selectionDetails: string;
+  selectionDetails?: string;
+  displayname?: string,
+  username?:string
+  email?:string
 }
 
 export interface IDetailsListBasicStyleProps {

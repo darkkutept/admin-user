@@ -27,6 +27,9 @@ export const getStyles = ( props: IAddUsersStyleProps ): IAddUsersStyles =>
             fontFamily: "Segoe UI"
          }
       ],
+      hieu:{ 
+         color: 'red',
+      }
    }
    return styles;
 }
