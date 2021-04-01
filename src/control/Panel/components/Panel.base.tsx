@@ -11,6 +11,9 @@ import { observer } from "mobx-react";
 import { getStore } from "../store/panelStore";
 import { openPanel } from "../mutatorAction/openPanel";
 import { PanelStyles } from "./Panel.styles";
+import { addUser } from "../action/addUser";
+import getStoreDetails from "../../detailsList/store/store";
+import { addToArray } from "../../detailsList/mutatorAction/addToArray";
 
 const getClassNames = classNamesFunction<IPanelStylesProps, IPanelStyles1>();
 const buttonStyles = { root: { marginRight: 8 } };
@@ -21,6 +24,7 @@ export class PanelBase extends React.Component<IPanelProps,IPanelState, {}> {
   constructor(props:any) {
     super(props);
     this.state = {
+      id: getStoreDetails().arrWords.length + 1,
       displayname: '',
       username: '',
       email: ''
@@ -91,8 +95,9 @@ export class PanelBase extends React.Component<IPanelProps,IPanelState, {}> {
 
   private handleSubmit = (e:any) => {
     e.preventDefault();
-    console.log(this.state);
-    
+    addToArray(this.state);
+    openPanel();
+    console.log(getStoreDetails().arrWords);
   }
 }
 

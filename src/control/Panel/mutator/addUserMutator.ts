@@ -1,12 +1,12 @@
 import { mutator } from "satcheljs";
-import getStore from "../../detailsList/store/store";
+import getStoreDetails from "../../detailsList/store/store";
 import { addUser } from "../action/addUser";
 
 mutator(addUser, (actionMessage) => {
-  getStore().arrWords.concat({
-    id: getStore().arrWords.length + 1,
-    displayname: actionMessage.text,
-    username: actionMessage.text,
-    email: actionMessage.text,
+    getStoreDetails().arrWords = getStoreDetails().arrWords.concat({
+    id: getStoreDetails().arrWords.length + 1,
+    displayname: actionMessage.displayname,
+    username: actionMessage.username,
+    email: actionMessage.email,
   });
 });

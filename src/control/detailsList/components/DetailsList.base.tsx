@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { classNamesFunction, Fabric, Text, Announced, TextField, MarqueeSelection, DetailsList, IColumn, Selection, ITextFieldStyles, DetailsListLayoutMode} from '@fluentui/react';
+import { classNamesFunction, Fabric, Text, Announced, TextField, MarqueeSelection, DetailsList, IColumn, Selection, ITextFieldStyles, DetailsListLayoutMode, ThemeProvider} from '@fluentui/react';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import getStore from '../store/store';
@@ -15,12 +15,7 @@ export default class DetailsListBase extends React.Component<IDetailsListBasicPr
 
   constructor(props:any) {
     super(props);
-    this.state = {
-      displayname: '',
-      username: '',
-      email: ''
-    }
-
+    
     this._selection = new Selection({
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
     });
@@ -37,19 +32,23 @@ export default class DetailsListBase extends React.Component<IDetailsListBasicPr
 
     this.state = {
       selectionDetails: this._getSelectionDetails(),
+      mang: store.arrWords,
     };
+  }
+  renderUsers = () => {
+    return store.arrWords
   }
 
   public render(): JSX.Element {
     const { styles, className } = this.props;
     const classNames = getClassNames(styles, { className });
-    const { selectionDetails } = this.state;
-
+    const { selectionDetails, mang } = this.state;
+      
     return (
-      <Fabric>
+      <ThemeProvider>
       <MarqueeSelection selection={this._selection}>
         <DetailsList
-          items={store.arrWords}
+          items={this.renderUsers()}
           columns={this._columns}
           setKey="set"
           layoutMode={DetailsListLayoutMode.justified}
@@ -61,7 +60,7 @@ export default class DetailsListBase extends React.Component<IDetailsListBasicPr
           onItemInvoked={this._onItemInvoked}
         />
       </MarqueeSelection>
-    </Fabric>
+    </ThemeProvider>
     )
   }
   private _getSelectionDetails(): string {

@@ -19,6 +19,7 @@ export interface IPanelProps{
 }
 
 export interface IPanelState{
+  id?:any
   displayname?: any,
   username?:any,
   email?: string,

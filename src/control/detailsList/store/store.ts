@@ -9,7 +9,7 @@
 import { createStore } from "satcheljs";
 import { Store } from "./AppState";
 
-let getStore = createStore<Store>("todoStore", {
+let getStoreDetails = createStore<Store>("todoStore", {
   arrWords: [
     {
       id: "1",
@@ -39,4 +39,4 @@ let getStore = createStore<Store>("todoStore", {
   isAdding: false,
 });
 
-export default getStore;
+export default getStoreDetails;

@@ -1,9 +1,11 @@
 import { action } from "satcheljs";
-import getStore from "../../detailsList/store/store";
+import getStoreDetails from "../../detailsList/store/store";
 
-const store = getStore();
+const store = getStoreDetails();
 export let addUser = action(
     'ADD_USER',
-    (text: string) => ({ 
-        text: text
+    (text:any) => ({ 
+        displayname:text,
+        username:text,
+        email:text,
     }));
