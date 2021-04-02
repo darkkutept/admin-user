@@ -1,5 +1,5 @@
 import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/react';
 
 
 export interface IHeaderProps

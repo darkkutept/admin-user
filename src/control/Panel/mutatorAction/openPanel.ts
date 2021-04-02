@@ -6,8 +6,3 @@ export let openPanel = mutatorAction(
      function openPanel() {
         getStore().isOpen = !getStore().isOpen;
     });
-    export let openPanelName = mutatorAction(
-        'OPEN_PANEL_NAME',
-         function openPanel() {
-            getStore().isOpen = !getStore().isOpen;
-        });

@@ -14,10 +14,12 @@ import {
 } from "@fluentui/react";
 import { LineSeperator } from "../../seperator/LineSeperator";
 import DetailsListBase from "../../detailsList/components/DetailsList.base";
-import { openPanel, openPanelName } from "../../Panel/mutatorAction/openPanel";
+import { openPanel } from "../../Panel/mutatorAction/openPanel";
 import { Panel } from "../../Panel";
 import { getStore } from "../../Panel/store/panelStore";
 import { observer } from "mobx-react";
+import { PanelChangeName } from "../../panelChangeName/components";
+import { openPanelName } from "../../panelChangeName/mutatorAction/setOpenPanelChangeName";
 
 const getClassNames = classNamesFunction<
   IAddUsersStyleProps,
@@ -74,77 +76,7 @@ export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
         />
       </Panel>
     );
-    const onRenderPanelChangedName = () => (
-      <Panel
-        name="Change Name"
-        iconClose="Close"
-        footerContent={onRenderFooterContent}
-        isFooterBottom={true}
-        openPanel={getStore().isOpen}
-        onClose={() => openPanelName()}
-      >
-        <TextField
-          label="Display Name"
-          placeholder="Please enter displayName here"
-          ariaLabel="Required without visible label"
-          required
-          onChange={this.handleChange}
-          name="displayname"
-        />
-        <TextField
-          label="User Name"
-          placeholder="Please enter user here"
-          required
-          onChange={this.handleChange}
-          name="username"
-        />
-        <TextField
-          label="Email"
-          placeholder="Please enter email here"
-          required
-          type="email"
-          onChange={this.handleChange}
-          name="email"
-        />
-      </Panel>
-    );
 
-    const handleOnClickAddUser = () => {
-     
-      
-      () => onRenderPanelAddUser();
-      () => openPanel();
-      console.log('alo alo');
-      
-    }
-
-    const _items: ICommandBarItemProps[] = [
-      {
-        key: "newItem",
-        text: "Add a user",
-        cacheKey: "myCacheKey", // changing this key will invalidate this item's cache
-        iconProps: { iconName: "Add" },
-        onClick: () => handleOnClickAddUser(),
-      },
-      {
-        key: "upload",
-        text: "Upload",
-        iconProps: { iconName: "Upload" },
-        onclick: () => openPanel(),
-      },
-      {
-        key: "share",
-        text: "Share",
-        iconProps: { iconName: "Share" },
-        onClick: () => console.log("Share"),
-      },
-      {
-        key: "download",
-        text: "Download",
-        iconProps: { iconName: "Download" },
-        onClick: () => console.log("Download"),
-      },
-    ];
     return (
       <div>
         <h1 className={classNames.hieu}>Active User</h1>
@@ -158,7 +90,7 @@ export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
         />
         <div>
           <DetailsListBase></DetailsListBase>
-          {onRenderPanelAddUser}
+          <PanelChangeName></PanelChangeName>
         </div>
       </div>
     );
@@ -169,16 +101,42 @@ export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
     openPanel();
   };
 
+  
+
   private handleChange = (e: any) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-
-  
 }
 
-
+const _items: ICommandBarItemProps[] = [
+  {
+    key: "newItem",
+    text: "Add a user",
+    cacheKey: "myCacheKey", // changing this key will invalidate this item's cache
+    iconProps: { iconName: "Add" },
+    onClick: () => openPanel(),
+  },
+  {
+    key: "upload",
+    text: "Changed Name",
+    iconProps: { iconName: "Upload" },
+    onclick: openPanelName(),
+  },
+  {
+    key: "share",
+    text: "Share",
+    iconProps: { iconName: "Share" },
+    onClick: () => console.log("Share"),
+  },
+  {
+    key: "download",
+    text: "Download",
+    iconProps: { iconName: "Download" },
+    onClick: () => console.log("Download"),
+  },
+];
 
 const _overflowItems: ICommandBarItemProps[] = [
   {
