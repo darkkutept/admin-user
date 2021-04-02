@@ -19,7 +19,6 @@ export class HeaderBase extends React.Component<IHeaderProps, {}> {
         <IconShowApp appName={"ProptechSoft"} iconName={"AlignLeft"} />
 
         <div className={classNames.HeaderRight}>
-          
          {this.props.children}
         </div>
       </div>

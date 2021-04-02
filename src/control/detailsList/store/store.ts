@@ -1,15 +1,8 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// import counterReducer from '../features/counter/counterSlice';
-// export default configureStore({
-//   reducer: {
-//     counter: counterReducer,
-//   },
-// });
-
 import { createStore } from "satcheljs";
 import { Store } from "./AppState";
 
-let getStoreDetails = createStore<Store>("todoStore", {
+
+let getStoreDetails = createStore<Store>("detailStore", {
   arrWords: [
     {
       id: "1",
@@ -37,6 +30,9 @@ let getStoreDetails = createStore<Store>("todoStore", {
     },
   ],
   isAdding: false,
+
 });
+
+
 
 export default getStoreDetails;
