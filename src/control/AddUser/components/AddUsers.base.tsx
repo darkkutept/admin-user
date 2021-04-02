@@ -14,19 +14,20 @@ import {
 } from "@fluentui/react";
 import { LineSeperator } from "../../seperator/LineSeperator";
 import DetailsListBase from "../../detailsList/components/DetailsList.base";
-import { openPanel } from "../../Panel/mutatorAction/openPanel";
+
 import { Panel } from "../../Panel";
 import { getStore } from "../../Panel/store/panelStore";
 import { observer } from "mobx-react";
 import { PanelChangeName } from "../../panelChangeName/components";
 import { openPanelName } from "../../panelChangeName/mutatorAction/setOpenPanelChangeName";
+import { PanelAddUser } from "../../panelAddUser/components";
+import { openPanelAddUser } from "../../panelAddUser/mutatorAction/setOpenPanelAddUser";
 
 const getClassNames = classNamesFunction<
   IAddUsersStyleProps,
   IAddUsersStyles
 >();
 const overflowProps: IButtonProps = { ariaLabel: "More commands" };
-const buttonStyles = { root: { marginRight: 8 } };
 
 @observer
 export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
@@ -34,48 +35,6 @@ export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
     const { className, styles } = this.props;
     const classNames = getClassNames(styles, { className });
 
-    const onRenderFooterContent = () => (
-      <div>
-        <PrimaryButton onClick={this.handleSubmit} styles={buttonStyles}>
-          Save
-        </PrimaryButton>
-        <DefaultButton onClick={() => openPanel()}>Cancel</DefaultButton>
-      </div>
-    );
-    const onRenderPanelAddUser = () => (
-      <Panel
-        name="Add User"
-        iconClose="Close"
-        footerContent={onRenderFooterContent}
-        isFooterBottom={true}
-        openPanel={getStore().isOpen}
-        onClose={() => openPanel()}
-      >
-        <TextField
-          label="Display Name"
-          placeholder="Please enter displayName here"
-          ariaLabel="Required without visible label"
-          required
-          onChange={this.handleChange}
-          name="displayname"
-        />
-        <TextField
-          label="User Name"
-          placeholder="Please enter user here"
-          required
-          onChange={this.handleChange}
-          name="username"
-        />
-        <TextField
-          label="Email"
-          placeholder="Please enter email here"
-          required
-          type="email"
-          onChange={this.handleChange}
-          name="email"
-        />
-      </Panel>
-    );
 
     return (
       <div>
@@ -91,6 +50,7 @@ export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
         <div>
           <DetailsListBase></DetailsListBase>
           <PanelChangeName></PanelChangeName>
+          <PanelAddUser></PanelAddUser>
         </div>
       </div>
     );
@@ -98,7 +58,7 @@ export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
   private handleSubmit = (e: any) => {
     e.preventDefault();
     // addToArray(this.state);
-    openPanel();
+    // openPanel();
   };
 
   
@@ -116,13 +76,13 @@ const _items: ICommandBarItemProps[] = [
     text: "Add a user",
     cacheKey: "myCacheKey", // changing this key will invalidate this item's cache
     iconProps: { iconName: "Add" },
-    onClick: () => openPanel(),
+    onClick: () => openPanelAddUser(),
   },
   {
-    key: "upload",
+    key: "changeItem",
     text: "Changed Name",
     iconProps: { iconName: "Upload" },
-    onclick: openPanelName(),
+    onClick: () => openPanelName(),
   },
   {
     key: "share",

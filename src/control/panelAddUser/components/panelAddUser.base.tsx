@@ -9,26 +9,25 @@ import { observer } from "mobx-react";
 import { classNamesFunction } from "@fluentui/react";
 import * as React from "react";
 import {
-  IPanelChangeNameProps,
-  IPanelChangeNameStyleProps,
-  IPanelChangeNameStyles,
-} from "./PanelChangeName.types";
+  IPanelAddUserProps,
+  IPanelAddUserStyleProps,
+  IPanelAddUserStyles,
+} from "./panelAddUser.types";
 import { Panel } from "../../Panel";
 import { getIsOpen } from "../selector/getIsOpen";
-import { openPanelName } from "../mutatorAction/setOpenPanelChangeName";
-import { getStore } from "../store/panelChangeNameStore";
-
+import { openPanelAddUser } from "../mutatorAction/setOpenPanelAddUser";
+import { getStore } from "../store/panelAddUserStore";
 
 const getClassNames = classNamesFunction<
-  IPanelChangeNameStyleProps,
-  IPanelChangeNameStyles
+  IPanelAddUserStyleProps,
+  IPanelAddUserStyles
 >();
 const buttonStyles = { root: { marginRight: 8 } };
 
 initializeIcons();
 @observer
-export class PanelChangeNameBase extends React.Component<
-  IPanelChangeNameProps,
+export class PanelAddUserBase extends React.Component<
+  IPanelAddUserProps,
   {}
 > {
   render() {
@@ -50,12 +49,12 @@ export class PanelChangeNameBase extends React.Component<
     return (
       <>
         <Panel
-          name="Change Name"
+          name="Add User"
           iconClose="Close"
           footerContent={onRenderFooterContent}
           isFooterBottom={true}
           openPanel={getIsOpen()}
-          onClose={() => openPanelName()}
+          onClose={() => openPanelAddUser()}
         >
           <TextField
             label="Display Name"
@@ -64,6 +63,22 @@ export class PanelChangeNameBase extends React.Component<
             required
             // onChange={}
             name="displayname"
+          />
+          <TextField
+            label="User Name"
+            placeholder="Please enter displayName here"
+            ariaLabel="Required without visible label"
+            required
+            // onChange={}
+            name="username"
+          />
+          <TextField
+            label="Email"
+            placeholder="Please enter displayName here"
+            ariaLabel="Required without visible label"
+            required
+            // onChange={}
+            name="email"
           />
         </Panel>
       </>

@@ -3,6 +3,8 @@ import { getStore } from "../store/panelChangeNameStore";
 
 export let openPanelName = mutatorAction(
     'OPEN_PANEL_NAME',
-     function openPanel() {
+     function openPanelName() {
+        
         getStore().isOpen = !getStore().isOpen;
+        
     });
