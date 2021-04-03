@@ -7,7 +7,8 @@ export interface IPanelChangeNameProps
  
    className?: string;
    styles?: IStyleFunctionOrObject<IPanelChangeNameStyleProps, IPanelChangeNameStyles>;
-   children?: JSX.Element
+   children?: JSX.Element;
+   displayname?:string
    
 }
 

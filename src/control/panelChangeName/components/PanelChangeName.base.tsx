@@ -17,7 +17,8 @@ import { Panel } from "../../Panel";
 import { getIsOpen } from "../selector/getIsOpen";
 import { openPanelName } from "../mutatorAction/setOpenPanelChangeName";
 import { getStore } from "../store/panelChangeNameStore";
-
+import { IDetailsListBasicProps } from "../../detailsList/components/DetailsList.types";
+import getStoreDetails from "../../detailsList/store/store";
 
 const getClassNames = classNamesFunction<
   IPanelChangeNameStyleProps,
@@ -32,19 +33,14 @@ export class PanelChangeNameBase extends React.Component<
   {}
 > {
   render() {
-    const { className, styles } = this.props;
+    const { className, styles, displayname } = this.props;
     const classNames = getClassNames(styles, { className });
     const onRenderFooterContent = () => (
       <div>
-        <PrimaryButton
-          onClick={() => console.log("save ne")}
-          styles={buttonStyles}
-        >
+        <PrimaryButton onClick={() => openPanelName()} styles={buttonStyles}>
           Save
         </PrimaryButton>
-        <DefaultButton onClick={() => console.log("cancel ne")}>
-          Cancel
-        </DefaultButton>
+        <DefaultButton onClick={() => openPanelName()}>Cancel</DefaultButton>
       </div>
     );
     return (
@@ -62,11 +58,13 @@ export class PanelChangeNameBase extends React.Component<
             placeholder="Please enter displayName here"
             ariaLabel="Required without visible label"
             required
-            // onChange={}
+            defaultValue={displayname}
             name="displayname"
+
           />
         </Panel>
       </>
     );
   }
 }
+

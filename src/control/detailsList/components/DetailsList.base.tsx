@@ -15,6 +15,7 @@ import {
 } from "@fluentui/react";
 import { observer } from "mobx-react";
 import * as React from "react";
+import { openPanelName } from "../../panelChangeName/mutatorAction/setOpenPanelChangeName";
 import { addArrToLocal, getArrWords, loadState } from "../selectors/getStoreFromLocal";
 import getStore from "../store/store";
 import {
@@ -148,6 +149,7 @@ export default class DetailsListBase extends React.Component<
   // };
 
   private _onItemInvoked = (item: IDetailsListBasicProps): void => {
-    alert(`Đang chọn: ${item.displayname}`);
+    // alert(`Đang chọn: ${item.displayname}`);
+    openPanelName();
   };
 }

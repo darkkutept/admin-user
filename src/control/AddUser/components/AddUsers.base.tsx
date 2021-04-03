@@ -31,6 +31,7 @@ const overflowProps: IButtonProps = { ariaLabel: "More commands" };
 
 @observer
 export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
+  
   render() {
     const { className, styles } = this.props;
     const classNames = getClassNames(styles, { className });
@@ -55,19 +56,7 @@ export class AddUsersBase extends React.Component<IAddUsersProps, {}> {
       </div>
     );
   }
-  private handleSubmit = (e: any) => {
-    e.preventDefault();
-    // addToArray(this.state);
-    // openPanel();
-  };
-
   
-
-  private handleChange = (e: any) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
 }
 
 const _items: ICommandBarItemProps[] = [
